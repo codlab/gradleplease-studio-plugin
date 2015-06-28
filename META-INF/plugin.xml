@@ -39,7 +39,7 @@
   <actions>
     <!-- Add your actions here -->
     <group id="GradlePleaseStudio" text="_Gradle Please studio" description="Gradle Please studio" popup="true">
-      <action id="SearchDependency" class="cz.jacktech.gradlepleasestudio.SearchDependency" text="Search Dependency">
+      <action id="Add Gradle Dependency" class="cz.jacktech.gradlepleasestudio.AddGradleDependency" text="Add Gradle Dependency">
         <add-to-group group-id="GradlePleaseStudio" anchor="first" />
       </action>
     </group>

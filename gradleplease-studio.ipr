@@ -61,13 +61,6 @@
   <component name="EntryPointsManager">
     <entry_points version="2.0" />
   </component>
-  <component name="MavenImportPreferences">
-    <option name="generalSettings">
-      <MavenGeneralSettings>
-        <option name="mavenHome" value="Bundled (Maven 3)" />
-      </MavenGeneralSettings>
-    </option>
-  </component>
   <component name="Palette2">
     <group name="Swing">
       <item class="com.intellij.uiDesigner.HSpacer" tooltip-text="Horizontal Spacer" icon="/com/intellij/uiDesigner/icons/hspacer.png" removable="false" auto-create-binding="false" can-attach-label="false">
@@ -204,10 +197,29 @@
       <module fileurl="file://$PROJECT_DIR$/gradleplease-studio.iml" filepath="$PROJECT_DIR$/gradleplease-studio.iml" />
     </modules>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_7" default="false" assert-keyword="true" jdk-15="true" project-jdk-name="Android Studio AI-141.2024585" project-jdk-type="IDEA JDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_7" default="false" assert-keyword="true" jdk-15="true" project-jdk-name="Android Studio AI-141.1980579" project-jdk-type="IDEA JDK">
     <output url="file://$PROJECT_DIR$/out" />
   </component>
   <component name="VcsDirectoryMappings">
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
+  </component>
+  <component name="libraryTable">
+    <library name="com.squareup.retrofit:retrofit:1.9.0" type="repository">
+      <properties maven-id="com.squareup.retrofit:retrofit:1.9.0" />
+      <CLASSES>
+        <root url="jar://$PROJECT_DIR$/lib/retrofit-1.9.0.jar!/" />
+        <root url="jar://$PROJECT_DIR$/lib/gson-2.3.1.jar!/" />
+      </CLASSES>
+      <JAVADOC />
+      <SOURCES />
+    </library>
+    <library name="joda-time:joda-time:2.8.1" type="repository">
+      <properties maven-id="joda-time:joda-time:2.8.1" />
+      <CLASSES>
+        <root url="jar://$PROJECT_DIR$/lib/joda-time-2.8.1.jar!/" />
+      </CLASSES>
+      <JAVADOC />
+      <SOURCES />
+    </library>
   </component>
 </project>
