@@ -1,6 +1,7 @@
 package cz.jacktech.gradlepleasestudio.ui;
 
 import com.intellij.openapi.project.Project;
+import com.intellij.psi.PsiFile;
 import com.intellij.ui.components.JBList;
 import com.intellij.ui.components.JBScrollPane;
 import cz.jacktech.gradlepleasestudio.net.NetManager;
@@ -12,8 +13,6 @@ import retrofit.client.Response;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
 import java.util.*;
 import java.util.List;
 
@@ -21,15 +20,17 @@ public class SearchDependencyPanel extends JPanel implements SearchHeader.Search
 
     private final NetManager mNetManager;
     protected Project mProject;
-    protected JButton mConfirm;
+    private PsiFile[] mBuildGradleFiles;
+    protected JButton mAddButton;
     protected JButton mCancel;
     private JBList mPackagesList;
     private SearchHeader mHeader;
     private DefaultListModel mListModel;
     private ArrayList<String> mGradlePackageList;
 
-    public SearchDependencyPanel(Project project) {
+    public SearchDependencyPanel(Project project, PsiFile[] fileList) {
         mProject = project;
+        mBuildGradleFiles = fileList;
         mNetManager = new NetManager();
 
         setPreferredSize(new Dimension(500, 250));
@@ -45,6 +46,7 @@ public class SearchDependencyPanel extends JPanel implements SearchHeader.Search
         contentPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
         contentPanel.add(mHeader = new SearchHeader(this));
         contentPanel.add(Box.createRigidArea(new Dimension(0, 5)));
+        contentPanel.requestFocusInWindow();
 
         mListModel = new DefaultListModel();
         mPackagesList = new JBList(mListModel);
@@ -67,12 +69,12 @@ public class SearchDependencyPanel extends JPanel implements SearchHeader.Search
         mCancel.setText("Cancel");
         mCancel.setVisible(true);
 
-        mConfirm = new JButton();
-        mConfirm.setAction(new ConfirmAction());
-        mConfirm.setMinimumSize(new Dimension(120, 32));
-        mConfirm.setPreferredSize(new Dimension(120, 32));
-        mConfirm.setText("Add");
-        mConfirm.setVisible(true);
+        mAddButton = new JButton();
+        mAddButton.setAction(new ConfirmAction());
+        mAddButton.setMinimumSize(new Dimension(120, 32));
+        mAddButton.setPreferredSize(new Dimension(120, 32));
+        mAddButton.setText("Add");
+        mAddButton.setVisible(true);
 
         JPanel buttonPanel = new JPanel();
         buttonPanel.setLayout(new BoxLayout(buttonPanel, BoxLayout.LINE_AXIS));
@@ -80,7 +82,7 @@ public class SearchDependencyPanel extends JPanel implements SearchHeader.Search
         buttonPanel.add(Box.createHorizontalGlue());
         buttonPanel.add(mCancel);
         buttonPanel.add(Box.createRigidArea(new Dimension(10, 0)));
-        buttonPanel.add(mConfirm);
+        buttonPanel.add(mAddButton);
 
         add(buttonPanel, BorderLayout.PAGE_END);
         refresh();
@@ -89,7 +91,7 @@ public class SearchDependencyPanel extends JPanel implements SearchHeader.Search
     protected void refresh() {
         revalidate();
 
-        if (mConfirm != null) {
+        if (mAddButton != null) {
         }
     }
 
@@ -100,8 +102,8 @@ public class SearchDependencyPanel extends JPanel implements SearchHeader.Search
         return valid;
     }
 
-    public JButton getConfirmButton() {
-        return mConfirm;
+    public JButton getAddButton() {
+        return mAddButton;
     }
 
     @Override
